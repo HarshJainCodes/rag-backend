@@ -115,7 +115,8 @@ async def chat_completion(request: ChatRequest):
             context_document += 'content: ' + doc.page_content
             
         response = completion(
-            model="deepseek/deepseek-chat",
+            # model="deepseek/deepseek-chat",
+            model="gpt-5.6-luna",
             messages=[
                 {
                     "role": 'system',
@@ -132,4 +133,6 @@ async def chat_completion(request: ChatRequest):
             "answer": response.choices[0].message.content
         }
     
-    return "No documents uploaded yet"
+    return {
+        "answer": "No documents uploaded yet"
+    }
